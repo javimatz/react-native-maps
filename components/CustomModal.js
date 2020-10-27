@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
   center: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.3)'
   },
   modalView: {
     backgroundColor: '#fff',
