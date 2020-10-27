@@ -40,6 +40,10 @@ export default function App() {
     setvisibilityFilter('view_list')
     setVisibility(true)
   }
+  
+  const closeModal = () => {
+    setVisibility(false)
+  }
 
   return (
     <View style={styles.container}>
@@ -54,7 +58,7 @@ export default function App() {
               <Button title='Cancelar' onPress={handleReset} />
             </>
             :
-            <List data={puntos} />
+            <List data={puntos} closeModal={closeModal} />
         }
       </CustomModal>
     </View>
