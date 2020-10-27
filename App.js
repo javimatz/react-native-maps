@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import Map from './components/Map'
 import CustomModal from './components/CustomModal'
 import CustomInput from './components/CustomInput'
@@ -21,11 +21,27 @@ export default function App() {
     setNombre(text)
   }
 
+  const handleSubmit = () => {
+    const nuevoPunto = { coordinate: puntoTemp, name: nombre }
+    setPuntos(puntos.concat(nuevoPunto))
+    setNombre('')
+    setVisibility(false)
+  }
+  
+  const handleReset = () => {
+    setNombre('')
+    setVisibility(false)
+  }
+
+  console.log(puntos)
+
   return (
     <View style={styles.container}>
       <Map onLongPress={handleLongPress} />
       <CustomModal visibility={visibility}>
         <CustomInput title='Nombre' placeholder='Introduzca un nombre' onChangeText={handleChangeText} />
+        <Button title='Aceptar' onPress={handleSubmit} />
+        <Button title='Cancelar' onPress={handleReset} />
       </CustomModal>
       <Panel />
     </View>

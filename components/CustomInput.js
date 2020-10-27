@@ -12,7 +12,6 @@ export default ({ title, ...rest }) => {
 
 const styles = StyleSheet.create({
 	wrapper: {
-		height: 40
 	}
 });
 
