@@ -1,11 +1,13 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 
-export default ({ onPressLeft, textLeft}) => {
+export default ({ onPressLeft, textLeft, togglePointsFilter }) => {
   return (
   	<View style={styles.panel}>
-  		<Button title={textLeft} onPress={onPressLeft} />
-  		<Button title='Mostrar/Ocultar' />
+      <View style={styles.buttonGroup}>
+  		  <Button title={textLeft} onPress={onPressLeft} />
+  		  <Button title='Mostrar/Ocultar' onPress={togglePointsFilter} />
+      </View>
   	</View>
   );
 }
@@ -16,5 +18,11 @@ const styles = StyleSheet.create({
   	flexDirection: 'row',
   	alignItems: 'center',
   	justifyContent: 'center',
+  },
+  buttonGroup: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    flexDirection: 'row'
   }
 });

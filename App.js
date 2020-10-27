@@ -13,6 +13,9 @@ export default function App() {
   const [visibility, setVisibility] = useState(false)
   const [visibilityFilter, setvisibilityFilter] = useState('add_point') // add_point, view_list
   const [puntoTemp, setPuntoTemp] = useState({})
+  const [pointsFilter, setPointsFilter] = useState(true)
+
+  const togglePointsFilter = () => setPointsFilter(!pointsFilter) 
 
   const handleLongPress = ({nativeEvent}) => {
     setvisibilityFilter('add_point')
@@ -47,16 +50,18 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Map onLongPress={handleLongPress} />
-      <Panel onPressLeft={handleList} textLeft='Lista' />
+      <Map onLongPress={handleLongPress} puntos={puntos} pointsFilter={pointsFilter} />
+      <Panel onPressLeft={handleList} textLeft='Lista' togglePointsFilter={togglePointsFilter} />
       <CustomModal visibility={visibility}>
         { 
           (visibilityFilter === 'add_point') ?
-            <>
+            <View style={styles.modal}>
               <CustomInput title='Nombre' placeholder='Introduzca un nombre' onChangeText={handleChangeText} />
-              <Button title='Aceptar' onPress={handleSubmit} />
-              <Button title='Cancelar' onPress={handleReset} />
-            </>
+              <View style={styles.buttonGroup} >
+                <Button title='Aceptar' onPress={handleSubmit} />
+                <Button title='Cancelar' onPress={handleReset} />
+              </View>
+            </View>
             :
             <List data={puntos} closeModal={closeModal} />
         }
@@ -72,4 +77,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
+  modal: {
+    padding: 15,
+    height: 150
+  },
+  buttonGroup: {
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+  }
 });
