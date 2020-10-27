@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Dimensions } from 'react-native';
 import MapView from 'react-native-maps';
 
-export default function Map({onLongPress}) {
+export default ({onLongPress}) => {
   return (
       <MapView 
       	style={styles.map} 

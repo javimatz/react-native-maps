@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 
-export default function Panel() {
+export default () => {
   return (
   	<View style={styles.panel}>
   		<Button title='Lista' />

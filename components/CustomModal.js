@@ -1,16 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, Modal } from 'react-native';
 
-export default function CustomModal() {
+export default ({children, visibility}) => {
   return (
 	<Modal
 	  animationType='slide'
 	  transparent={true}
-	  visible={false}
+	  visible={visibility}
 	>
 	  <View style={styles.center}>
 	    <View style={styles.modalView} >
-	      <Text>: )kk </Text>
+	      {children}
 	    </View>
 	  </View>
 	</Modal>
@@ -34,3 +34,4 @@ const styles = StyleSheet.create({
     }
   }
 });
+
